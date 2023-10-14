@@ -101,11 +101,11 @@ const SignUpPage = () => {
           />
         </Form.Group>
 
-        <Button variant="primary" type="submit" onClick={handleSubmit}>
+        {/* <Button variant="primary" type="submit" onClick={handleSubmit}>
           Submit
-        </Button>
+        </Button> */}
         <Button variant="primary" type="submit" onClick={signUp}>
-          Submit - await
+          Submit
         </Button>
       </Form>
     </Card>
