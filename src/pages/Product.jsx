@@ -9,7 +9,6 @@ import { Button } from "react-bootstrap";
 import ViewProduct from "../components/ViewProduct";
 import EditProduct from "../components/EditProduct";
 import NavbarMenu from "../components/NavbarMenu";
-import SetSearchedFound from "../components/setSearchedFound";
 
 const Product = () => {
   const [products, setProducts] = useState([]);
