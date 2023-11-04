@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-// import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { errorToast, successToast } from "../services/toast.service";
 
@@ -14,8 +13,6 @@ const SignInPage = () => {
   const navigate = useNavigate();
 
   function handleChange(e) {
-    // console.log(e.target.value);
-    // email = e.target.value;
     if (e.target.name === "email") {
       setEmail(e.target.value);
     } else if (e.target.name === "password") {
@@ -28,13 +25,16 @@ const SignInPage = () => {
     e.preventDefault();
     const data = { email, password };
     // Axios call for login
+
+    // <Authentication></Authentication>;
     axios
       .post("https://backend-mu-pied.vercel.app/users/login", data)
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         if (res.data.status) {
           // Navigate
-          navigate("/quotes");
+          localStorage.setItem("isLoggedIn", true);
+          navigate("/products");
           successToast(res.data.message);
         }
       })
@@ -52,7 +52,7 @@ const SignInPage = () => {
       <Form>
         <h1>Sign-In</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          {/* <Form.Label>Email address</Form.Label> */}
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -63,7 +63,7 @@ const SignInPage = () => {
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
+          {/* <Form.Label>Password</Form.Label> */}
           <Form.Control
             type="password"
             placeholder="Password"
@@ -82,3 +82,6 @@ const SignInPage = () => {
 };
 
 export default SignInPage;
+
+// User: shaileshyadv@gmail.com
+// password: 123456789

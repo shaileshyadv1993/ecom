@@ -8,6 +8,8 @@ import {
   Button,
 } from "react-bootstrap";
 
+import NavBarCommon from "./NavBarCommon";
+
 const QuotesDisplay = () => {
   const [id, setId] = useState(0);
   const [quote, setQuote] = useState();
@@ -18,18 +20,13 @@ const QuotesDisplay = () => {
     const { data } = await axios.get("https://dummyjson.com/quotes");
     const { quotes } = data;
     setId(Math.floor(Math.random() * quotes.length));
-    // console.log(quotes[id].quote);
-    // console.log(quotes[id].author);
     setQuote(quotes[id].quote);
     setAuthor(quotes[id].author);
-    // console.log("Quote:", quote);
-    // console.log("Quote:", author);
-
-    // console.log(data[index]);
   };
 
   return (
     <>
+      <NavBarCommon />
       <Card>
         <CardHeader>
           <h1>QUOTES</h1>

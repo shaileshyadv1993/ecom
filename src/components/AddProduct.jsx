@@ -1,0 +1,69 @@
+import React, { useState } from "react";
+import { Button, Form, Modal, ModalBody, FloatingLabel } from "react-bootstrap";
+
+const AddProduct = ({ show, handleClose, addProductHandler, handleChange }) => {
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleshow = () => setShow(true);
+  // console.log("Addproduct");
+  return (
+    <>
+      <Modal show={show}>
+        <Modal.Header className="m-auto">
+          <h3>Add New Product</h3>
+        </Modal.Header>
+
+        <Modal.Body>
+          <Form>
+            <FloatingLabel
+              controlId="floatingInput"
+              label="Image"
+              className="mb-3"
+            >
+              <Form.Control
+                type="text"
+                placeholder="Product-image"
+                // onChange={(e) => setImage(e.target.value)}
+                onChange={handleChange}
+                name="thumbnail"
+              />
+            </FloatingLabel>
+
+            <FloatingLabel
+              controlId="floatingTitle"
+              label="Title"
+              className="mb-3"
+            >
+              <Form.Control
+                type="text"
+                placeholder="Title"
+                onChange={handleChange}
+                name="title"
+              />
+            </FloatingLabel>
+
+            <FloatingLabel controlId="floatingDes" label="Description">
+              <Form.Control
+                type="text"
+                placeholder="Description"
+                onChange={handleChange}
+                name="description"
+              />
+            </FloatingLabel>
+          </Form>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={addProductHandler}>
+            Add Product
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+  );
+};
+
+export default AddProduct;

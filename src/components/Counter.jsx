@@ -7,6 +7,8 @@ import {
   CardHeader,
 } from "react-bootstrap";
 
+import NavBarCommon from "./NavBarCommon";
+
 const Counter = () => {
   const [count, setCount] = useState(0);
   const [time, setTime] = useState(0);
@@ -56,26 +58,29 @@ const Counter = () => {
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <h1>Couner</h1>
-      </CardHeader>
-      <CardBody>
-        <h2> {count}</h2>
-        <h3>Time: {time} sec</h3>
-      </CardBody>
-      <CardFooter className="d-flex gap-3">
-        <Button variant="success" onClick={increment}>
-          Increment
-        </Button>
-        <Button variant="warning" onClick={decrement}>
-          Decrement
-        </Button>
-        <Button variant="danger" onClick={reset}>
-          Reset
-        </Button>
-      </CardFooter>
-    </Card>
+    <>
+      <NavBarCommon />
+      <Card>
+        <CardHeader>
+          <h1>Couner</h1>
+        </CardHeader>
+        <CardBody>
+          <h2> {count}</h2>
+          <h3>Time: {time} sec</h3>
+        </CardBody>
+        <CardFooter className="d-flex gap-3">
+          <Button variant="success" onClick={increment}>
+            Increment
+          </Button>
+          <Button variant="warning" onClick={decrement}>
+            Decrement
+          </Button>
+          <Button variant="danger" onClick={reset}>
+            Reset
+          </Button>
+        </CardFooter>
+      </Card>
+    </>
   );
 };
 
