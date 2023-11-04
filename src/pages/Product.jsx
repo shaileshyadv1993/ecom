@@ -5,7 +5,7 @@ import Loader from "../components/Loader";
 import { errorToast } from "../services/toast.service";
 import ProductList from "../components/ProductList";
 import AddProduct from "../components/AddProduct";
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 import ViewProduct from "../components/ViewProduct";
 import EditProduct from "../components/EditProduct";
 import NavbarMenu from "../components/NavbarMenu";
@@ -27,6 +27,7 @@ const Product = () => {
   const [viewProduct, setViewProduct] = useState([]);
   const [editProduct, setEditProduct] = useState({});
   const [originalData, setOriginalData] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const getData = async () => {
     try {
@@ -34,6 +35,13 @@ const Product = () => {
       const { data } = await axios.get(URL + "products");
       setProducts(data.products);
       setOriginalData(data.products);
+
+      const categoryData = data.products.map((prod) => {
+        return prod.category;
+      });
+      // const uniqueArray = Set(categoryData);
+      setCategories(Array.from(new Set(categoryData)));
+
       setIsLoading(false);
     } catch (error) {
       errorToast(error.response.data);
@@ -44,6 +52,9 @@ const Product = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  // console.log("Data: ", categories);
+  // console.log("Typeof: ", typeof categories);
 
   const deleteHandler = (e, id) => {
     e.preventDefault();
@@ -160,7 +171,20 @@ const Product = () => {
     console.log("Searched:", searchedProduct);
     setProducts(searchedProduct);
   };
+  // console.log(products);
 
+  // Filter data
+  function filterData(data) {
+    console.log(data);
+    if (data === "") {
+      setProducts(originalData);
+    } else {
+      const filteredProd = originalData.filter((prod) => {
+        return prod.category === data;
+      });
+      setProducts(filteredProd);
+    }
+  }
   return (
     <>
       <NavbarMenu searchProduct={searchHandle} />
@@ -169,9 +193,25 @@ const Product = () => {
         <Loader />
       ) : (
         <>
-          <Button variant="info" className="mb-3" onClick={showProduct}>
-            Add Product
-          </Button>
+          <div className="d-flex justify-content-between mb-5">
+            <Button variant="info" onClick={showProduct}>
+              Add Product
+            </Button>
+            <Form.Select
+              size="sm"
+              style={{ width: "200px" }}
+              onChange={(e) => filterData(e.target.value)}
+            >
+              <option value="">Filter by category</option>
+              {categories.map((category, index) => {
+                return (
+                  <option key={index} value={category}>
+                    {category}
+                  </option>
+                );
+              })}
+            </Form.Select>
+          </div>
           <div className="d-flex flex-wrap gap-4">
             {products.map((prod) => {
               return (
