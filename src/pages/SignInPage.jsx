@@ -33,7 +33,7 @@ const SignInPage = () => {
         console.log(res);
         if (res.data.status) {
           // Navigate
-          localStorage.setItem("isLoggedIn", true);
+          sessionStorage.setItem("isLoggedIn", true);
           navigate("/products");
           successToast(res.data.message);
         }

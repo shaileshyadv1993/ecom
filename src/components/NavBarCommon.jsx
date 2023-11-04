@@ -46,7 +46,7 @@ const NavBarCommon = () => {
                 <Button
                   type="submit"
                   onClick={(e) => {
-                    localStorage.clear("isLoggedIn");
+                    sessionStorage.clear("isLoggedIn");
                     navigate("/");
                   }}
                 >

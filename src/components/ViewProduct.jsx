@@ -21,7 +21,7 @@ const ViewProduct = ({ show, handleChange, handleClose, product }) => {
         </Modal.Header>
 
         <Modal.Body>
-          <Card key={product.id} style={{ width: "100%", height: "500px" }}>
+          <Card key={product.id} style={{ width: "100%", height: "75%" }}>
             <CardHeader style={{ height: "60%" }}>
               <Card.Img src={product.thumbnail} className="h-75"></Card.Img>
             </CardHeader>

@@ -212,7 +212,7 @@ const Product = () => {
               })}
             </Form.Select>
           </div>
-          <div className="d-flex flex-wrap gap-4">
+          <div className="d-flex flex-wrap justify-content-even gap-3">
             {products.map((prod) => {
               return (
                 <ProductList

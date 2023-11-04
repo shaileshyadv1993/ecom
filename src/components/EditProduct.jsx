@@ -10,12 +10,12 @@ const EditProduct = ({
 }) => {
   return (
     <>
-      <Modal show={show}>
+      <Modal show={show} style={{ height: "auto" }}>
         <Modal.Header className="m-auto">
           <h3>Edit Product</h3>
         </Modal.Header>
 
-        <Modal.Body>
+        <Modal.Body style={{ height: "auto" }}>
           <Form>
             <FloatingLabel
               controlId="floatingInput"
@@ -45,13 +45,31 @@ const EditProduct = ({
               />
             </FloatingLabel>
 
-            <FloatingLabel controlId="floatingDes" label="Description">
+            <FloatingLabel
+              controlId="floatingDes"
+              label="Description"
+              className="mb-3"
+            >
               <Form.Control
                 type="text"
-                placeholder="Description"
+                placeholder="Discount Percentage"
                 onChange={handleEditChange}
                 name="description"
                 value={product.description}
+                readOnly
+              />
+            </FloatingLabel>
+
+            <FloatingLabel
+              controlId="floatingDescount"
+              label="Discount Percentage"
+            >
+              <Form.Control
+                type="text"
+                placeholder="Discount Percentage"
+                onChange={handleEditChange}
+                name="discountPercentage"
+                value={product.discountPercentage}
               />
             </FloatingLabel>
           </Form>
