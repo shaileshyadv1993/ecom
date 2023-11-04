@@ -42,12 +42,52 @@ const AddProduct = ({ show, handleClose, addProductHandler, handleChange }) => {
               />
             </FloatingLabel>
 
-            <FloatingLabel controlId="floatingDes" label="Description">
+            <FloatingLabel
+              controlId="floatingDes"
+              label="Description"
+              className="mb-3"
+            >
               <Form.Control
                 type="text"
                 placeholder="Description"
                 onChange={handleChange}
                 name="description"
+              />
+            </FloatingLabel>
+            <FloatingLabel
+              controlId="floatingDes"
+              label="Price"
+              className="mb-3"
+            >
+              <Form.Control
+                type="text"
+                placeholder="Price"
+                onChange={handleChange}
+                name="price"
+              />
+            </FloatingLabel>
+            <FloatingLabel
+              controlId="floatingDes"
+              label="category"
+              className="mb-3"
+            >
+              <Form.Control
+                type="text"
+                placeholder="category"
+                onChange={handleChange}
+                name="category"
+              />
+            </FloatingLabel>
+            <FloatingLabel
+              controlId="floatingDes"
+              label="Discount Percentage"
+              className="mb-3"
+            >
+              <Form.Control
+                type="text"
+                placeholder="discountPercentage"
+                onChange={handleChange}
+                name="discountPercentage"
               />
             </FloatingLabel>
           </Form>
