@@ -6,16 +6,27 @@ import {
   CardHeader,
   Button,
   Nav,
+  Overlay,
 } from "react-bootstrap";
 
 const ProductList = ({ product, deleteHandler, editHandler, viewHandler }) => {
   return (
     <>
-      <Card key={product.id} style={{ width: "350px", height: "auto" }}>
-        <CardHeader className="h-50 w-100">
-          <Card.Img src={product.thumbnail} className="h-100"></Card.Img>
+      <Card
+        key={product.id}
+        style={{
+          width: "370px",
+          height: "auto",
+          padding: "15px",
+        }}
+      >
+        <CardHeader style={{ height: "200px", width: "100%" }}>
+          <Card.Img
+            src={product.thumbnail}
+            style={{ height: "100%", width: "100%" }}
+          ></Card.Img>
         </CardHeader>
-        <CardBody>
+        <CardBody className="h-75 w-100">
           <h2>
             {product.title.length > 10
               ? product.title.slice(0, 10) + "..."
@@ -45,7 +56,7 @@ const ProductList = ({ product, deleteHandler, editHandler, viewHandler }) => {
               : product.description}
           </p> */}
         </CardBody>
-        <CardFooter className="d-flex gap-3 justify-content-between mt-4">
+        <CardFooter className="d-flex gap-3 justify-content-between  mb-0 w-100">
           <Button
             variant="primary"
             onClick={(e) => {
